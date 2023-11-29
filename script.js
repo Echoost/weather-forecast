@@ -17,13 +17,14 @@ const rain = 'img/rain.png';
 
 let dataBase = [];
 
-
+// функция, изменяющая информацию погоды
 const editElement = (town, degrees, weather) => {
     city.textContent = town;
     degree.textContent = degrees;
     img.src = weather
 }
 
+// функция добавляющая элемент в список избранных
 const addElement = (element , city, nameOfClass) => {
     const newElement = document.createElement(element);
     newElement.className = nameOfClass;
@@ -32,6 +33,7 @@ const addElement = (element , city, nameOfClass) => {
 
 
 }
+
 
 const toShowElement = () => {
     const listName = document.querySelectorAll('.main__li');
@@ -82,8 +84,10 @@ const toMakeNewElement = () => {
 const addLocation = (event) => {
     event.preventDefault();
     
+    for (let i = 0; i < dataBase.length; i++) {
+        if (dataBase[i] === input.value) return
+    }
     
-     
     dataBase[dataBase.length] = input.value;
     toMakeNewElement();  
     
@@ -92,11 +96,6 @@ const addLocation = (event) => {
 const toFirstUppercase = (elem) => {
     return elem[0].toUpperCase() + elem.slice(1);
 }
-
-const deleteElement = (elem) => {
-    
-}
-
 
 const getWeatherOptinons = (value) => {
     fetch(`${serverUrl}?q=${value}&appid=${apiKey}`)
