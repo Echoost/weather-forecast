@@ -3,7 +3,7 @@ body {
 }
 .main {
     width: 621px;
-    height: 383px;
+    height: 618px;
     background-color: #fff;
     position: absolute;
     top: 50%; 
@@ -13,7 +13,7 @@ body {
 
 .main__block {
     width: 600px;
-    height: 359px;
+    height: 593px;
     border: 1px solid #000;
     margin: 11px 0 0 10px;}
 .main__form {
@@ -48,7 +48,7 @@ input:active, :hover, :focus {
         outline-offset: 0;
 }
 .main__wrapper {
-    height: 314px;
+    height: 547px;
     display: flex;
     justify-content: space-between;
 
@@ -163,4 +163,25 @@ input:active, :hover, :focus {
     margin-top: 16px;
     font-family: Roboto;
 
+}
+
+.main__block__clock {
+    margin-top: 25px;
+    color: #000;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.main__temp {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+    margin-top: 13px;
+}
+.main__temp__img {
+    display: block;
+    height: 38px;
 }
