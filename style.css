@@ -9,13 +9,16 @@ body {
     top: 50%; 
     right: 50%;
     transform: translate(50%,-50%);
+
 }
 
 .main__block {
     width: 600px;
     height: 593px;
     border: 1px solid #000;
-    margin: 11px 0 0 10px;}
+    margin: 11px 0 0 10px;
+    
+}
 .main__form {
     display: flex;
     justify-content: space-between;

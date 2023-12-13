@@ -2,19 +2,23 @@ export {addLocation, toDeleteElement, toShowElement}
 import { getWeatherOptions, inputValue } from './main.js';
 import { addElement, toFirstUppercase } from './constuctors.js';
 import { ELEMENTS } from './const.js';
+import { updateLocalStorage, loadLocalStorage, loadSavedCities } from './storage.js';
 let dataBase = [];
 let closeElement;
 let listName;
 
+loadLocalStorage(dataBase);
+
+
 const addLocation = (event) => {
     event.preventDefault();
     
+
     if (dataBase.includes(inputValue) === true) return
-    
-    dataBase[dataBase.length] = inputValue;
-    toMakeNewElement();  
-    
-    
+    dataBase.push(inputValue);
+    updateLocalStorage(dataBase);
+    toMakeNewElement();
+
 }
 
 const toMakeNewElement = () => {
@@ -38,6 +42,7 @@ const deleteElement = (parent) => {
     const block = parent.target.parentNode;
     const index = Array.from(closeElement).indexOf(parent.target);
     dataBase.splice(index, 1);
+    updateLocalStorage(dataBase);
     block.remove()
 }
 // удаляет элемент из списка избранных
@@ -65,4 +70,9 @@ const toShowElement = () => {
     
     
 }
+loadSavedCities(dataBase);
 
+
+const a = [1];
+a.splice(0,1)
+console.log(a)
