@@ -132,7 +132,7 @@ input:active, :hover, :focus {
     line-height: normal;
     line-height: 40px;
     overflow-y: scroll;
-    height: 200px;
+    height: 440px;
 }
 
 .main__li {
