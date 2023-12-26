@@ -3,22 +3,19 @@ import { getWeatherOptions, inputValue } from './main.js';
 import { addElement, toFirstUppercase } from './constuctors.js';
 import { ELEMENTS } from './const.js';
 import { updateLocalStorage, loadLocalStorage, loadSavedCities } from './storage.js';
-let dataBase = [];
+const dataBase = new Set();
 let closeElement;
 let listName;
 
 loadLocalStorage(dataBase);
 
-
 const addLocation = (event) => {
     event.preventDefault();
-    
-
-    if (dataBase.includes(inputValue) === true) return
-    dataBase.push(inputValue);
+    if (dataBase.has(inputValue) === true) return
+    dataBase.add(inputValue);
     updateLocalStorage(dataBase);
     toMakeNewElement();
-
+    console.log(dataBase)
 }
 
 const toMakeNewElement = () => {
@@ -37,11 +34,27 @@ const toMakeNewElement = () => {
 
 }
 
+export const getValueByIndex = (set, index) => {
+    let counter = 0
+    let result;
+
+    for (let value of set) {
+        if (counter === index) {
+            result = value
+            break
+        }
+        counter++
+    }
+    return result
+}
+
 const deleteElement = (parent) => {
     parent.preventDefault();
     const block = parent.target.parentNode;
     const index = Array.from(closeElement).indexOf(parent.target);
-    dataBase.splice(index, 1);
+    const elementToDelete = getValueByIndex(dataBase, index);
+    console.log(elementToDelete);
+    dataBase.delete(elementToDelete);
     updateLocalStorage(dataBase);
     block.remove()
     closeElement = document.querySelectorAll('.main__close');
@@ -74,6 +87,3 @@ const toShowElement = () => {
 loadSavedCities(dataBase);
 
 
-const a = [1];
-a.splice(0,1)
-console.log(a)

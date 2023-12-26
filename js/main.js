@@ -7,7 +7,6 @@ export let inputValue;
 // когда пользователь вводит данные, вызывается данная функция
 const addWeather = (event) => {
     inputValue = ELEMENTS.INPUT.value;
-    
     event.preventDefault();
     getWeatherOptions(inputValue);
     
@@ -30,7 +29,6 @@ export const getWeatherOptions = (value) => {
             }
         })
         .then(data => {
-            
             editElement(toFirstUppercase(value), Math.round(data.list[0].main.temp - 273), editImg(data.list[0].weather[0].main), Math.round(data.list[0].main.feels_like - 273), getDate(data.city.sunrise), getDate(data.city.sunset));
             editFutureElements(data);
         });
